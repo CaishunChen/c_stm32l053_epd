@@ -24,26 +24,26 @@ extern "C" {
 /****** Macros ****************************************************************/
 
 /******************************************************************************/
-// Sysclock configuration
+/* Sysclock configuration                                                     */
 /******************************************************************************/
 #define CONFIG_SYSCLOCK                  ( 16000000UL )
 #define CONFIG_SYSCLOCK_16MHZ            ( 16000000UL )
 #define CONFIG_SYSCLOCK_2MHZ             ( 2000000UL )
 
 /******************************************************************************/
-// Systick configuration
+/* Systick configuration                                                      */
 /******************************************************************************/
 #if CONFIG_SYSCLOCK == CONFIG_SYSCLOCK_16MHZ
 	#define CONFIG_SYSTICK_1MS           ( 16000UL )
-#endif // #ifdef CONFIG_SYSCLOCK_16MHZ
+#endif /* #ifdef CONFIG_SYSCLOCK_16MHZ */
 
 #if CONFIG_SYSCLOCK == CONFIG_SYSCLOCK_2MHZ
 	#define CONFIG_SYSTICK_1MS           ( 2000UL )
-#endif // #ifdef CONFIG_SYSCLOCK_2MHZ
+#endif /* #ifdef CONFIG_SYSCLOCK_2MHZ */
 
 
 /******************************************************************************/
-// Button interrupt configuration
+/* Button interrupt configuration                                             */
 /******************************************************************************/
 #define CONFIG_BTN_ISR_PRIO              ((1 << __NVIC_PRIO_BITS) - 1)
 

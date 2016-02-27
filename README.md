@@ -1,5 +1,6 @@
-# Simple blinky project for stm32l053 dicovery 
+# stm32l053 dicovery project for epd display 
 
 ## Brief
-This is a good starting point for further development
+This project is a good starting point for handling the attached 
+electronic paper display. 
 

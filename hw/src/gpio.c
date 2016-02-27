@@ -77,25 +77,25 @@ gpio_init (GPIO_TypeDef * ptGpioBase, uint32_t u32Pin, GpioInit_t * ptGpioInit) 
     assert(IS_GPIO_PULL(ptGpioInit->tGpioPull));
 
     /* set the mode register of the desired gpio */
-    ptGpioBase->MODER &= ~(0b11UL << (u32Pin << 1UL));
-    ptGpioBase->MODER |= ((0b11UL & ptGpioInit->tGpioMode) << (u32Pin << 1UL));
+    ptGpioBase->MODER &= ~(0x03UL << (u32Pin << 1UL));
+    ptGpioBase->MODER |= ((0x03UL & ptGpioInit->tGpioMode) << (u32Pin << 1UL));
 
     /* set the gpio output type register */
     if (ptGpioInit->tGpioOutput == GPIO_OUTPUT_PUSH_PULL) {
 
-        ptGpioBase->OTYPER &= ~(0b01UL << u32Pin);
+        ptGpioBase->OTYPER &= ~(0x01UL << u32Pin);
 
     } else {
 
-        ptGpioBase->OTYPER |= (0b01UL << u32Pin);
+        ptGpioBase->OTYPER |= (0x01UL << u32Pin);
     }
 
     /* set the output speed register */
-    ptGpioBase->OSPEEDR &= ~(0b11UL << (u32Pin << 1UL));
-    ptGpioBase->OSPEEDR |= ((0b11UL & ptGpioInit->tGpioSpeed) << (u32Pin << 1UL));
+    ptGpioBase->OSPEEDR &= ~(0x03UL << (u32Pin << 1UL));
+    ptGpioBase->OSPEEDR |= ((0x03UL & ptGpioInit->tGpioSpeed) << (u32Pin << 1UL));
 
     /* set port pull-up/pull-down register */
-    ptGpioBase->PUPDR &= ~(0b11UL << (u32Pin << 2UL));
-    ptGpioBase->PUPDR |= ((0b11UL & ptGpioInit->tGpioPull) << (u32Pin << 1UL));
+    ptGpioBase->PUPDR &= ~(0x03UL << (u32Pin << 2UL));
+    ptGpioBase->PUPDR |= ((0x03UL & ptGpioInit->tGpioPull) << (u32Pin << 1UL));
 }
 

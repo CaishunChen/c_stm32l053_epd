@@ -57,7 +57,7 @@ systick_delayMs(uint32_t u32DelayMs) {
 
     uint32_t u32StartTick = u32Tick;
     while((u32DelayMs + u32StartTick) > u32Tick) {
-        // TODO Go to sleep mode within busy loop
+        /* TODO Go to sleep mode within busy loop */
     }
 }
 

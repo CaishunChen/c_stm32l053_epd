@@ -34,7 +34,7 @@ typedef enum _GpioMode_t {
     GPIO_MODE_INPUT     = 0x00,
     GPIO_MODE_OUTPUT    = 0x01,
     GPIO_MODE_ALTERNATE = 0x10,
-    GPIO_MODE_ANALOG    = 0x11   ///< Reset state
+    GPIO_MODE_ANALOG    = 0x11      /* Reset state */
 
 }
 GpioMode_t;
@@ -42,7 +42,7 @@ GpioMode_t;
 
 typedef enum _GpioOutput_t {
 
-    GPIO_OUTPUT_PUSH_PULL  = 0x00,  ///< Reset state
+    GPIO_OUTPUT_PUSH_PULL  = 0x00,  /* Reset state */
     GPIO_OUTPUT_OPEN_DRAIN = 0x01
 
 } GpioOutput_t;
@@ -66,7 +66,7 @@ typedef enum _GpioPull_t {
 
 } GpioPull_t;
 
-// TODO create fct for handling alternate function
+/* TODO create fct for handling alternate function */
 typedef enum _GpioAF_t {
 
     GPIO_AF_0 = 0x0000,
@@ -89,6 +89,13 @@ typedef struct _GpioInit_t {
     GpioPull_t    tGpioPull;
 
 } GpioInit_t;
+
+
+typedef enum _GpioState_t {
+
+	GPIO_STATE_SET   = 0,
+	GPIO_STATE_CLEAR = 1
+}GpioState_t;
 
 
 /****** Function prototypes ****************************************************/
@@ -116,6 +123,22 @@ static inline void
 gpio_clear(GPIO_TypeDef * ptGpioBase, uint32_t u32Pin) {
 
     ptGpioBase->BSRR |= (0x10000UL << u32Pin);
+}
+
+
+/*******************************************************************************
+ *  function :    gpio_setState
+ ******************************************************************************/
+static inline void
+gpio_setState(GPIO_TypeDef * ptGpioBase,
+		      uint32_t u32Pin,
+		      GpioState_t tGpioState) {
+
+	if(tGpioState == GPIO_STATE_SET) {
+		gpio_set(ptGpioBase, u32Pin);
+	} else {
+		gpio_clear(ptGpioBase, u32Pin);
+	}
 }
 
 
