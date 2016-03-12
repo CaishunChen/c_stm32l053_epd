@@ -69,11 +69,12 @@ static BtnHandlingCtx_t tHandlingCtx[BTN_QUANTITY] = {
 void
 btn_init(void) {
 
-    GpioInit_t tGpioInit = {GPIO_MODE_INPUT,
-                            GPIO_OUTPUT_PUSH_PULL,
-                            GPIO_SPEED_MEDIUM,
-                            GPIO_PULL_NON
-                           };
+    GpioInit_t tGpioInit = {
+        GPIO_MODE_INPUT,
+        GPIO_OUTPUT_PUSH_PULL,
+        GPIO_SPEED_MEDIUM,
+        GPIO_PULL_NONE
+    };
 
     /* Enable the peripheral clock of GPIOA */
     RCC->IOPENR |= RCC_IOPENR_GPIOAEN;

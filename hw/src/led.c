@@ -56,11 +56,12 @@ uint32_t u32UserLedPin[LED_QUANTITY] = {
 void
 led_init(void) {
 
-    GpioInit_t tGpioInit = {GPIO_MODE_OUTPUT,
-                            GPIO_OUTPUT_PUSH_PULL,
-                            GPIO_SPEED_MEDIUM,
-                            GPIO_PULL_NON
-                           };
+    GpioInit_t tGpioInit = {
+        GPIO_MODE_OUTPUT,
+        GPIO_OUTPUT_PUSH_PULL,
+        GPIO_SPEED_MEDIUM,
+        GPIO_PULL_NONE
+    };
 
     /* Enable the peripheral clock of GPIOA and GPIOB */
     RCC->IOPENR |= RCC_IOPENR_GPIOAEN | RCC_IOPENR_GPIOBEN;

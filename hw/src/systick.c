@@ -67,7 +67,7 @@ systick_delayMs(uint32_t u32DelayMs) {
  ******************************************************************************/
 uint32_t
 systick_getTick(void) {
-	return (u32Tick);
+    return (u32Tick);
 }
 
 
